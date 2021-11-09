@@ -9,22 +9,22 @@ const {User, Membership} = require('./models');
 
 
 const createUsers = async () => {
-    let pw1 = await bcrypt.hash('ty212', 2);
-    let pw2 = await bcrypt.hash('ja275', 2);
-    let pw3 = await bcrypt.hash('an649', 2);
-    let pw4 = await bcrypt.hash('ch275', 2);
-    let pw5 = await bcrypt.hash('sh515', 2);
-    let pw6 = await bcrypt.hash('mu298', 2);
-    let pw7 = await bcrypt.hash('st998', 2);
+    // let pw1 = await bcrypt.hash('ty212', 2);
+    // let pw2 = await bcrypt.hash('ja275', 2);
+    // let pw3 = await bcrypt.hash('an649', 2);
+    // let pw4 = await bcrypt.hash('ch275', 2);
+    // let pw5 = await bcrypt.hash('sh515', 2);
+    // let pw6 = await bcrypt.hash('mu298', 2);
+    // let pw7 = await bcrypt.hash('st998', 2);
 
     const users = [
-        {name : 'Tyson', password: pw1 },
-        {name : 'James', password : pw2 },
-        {name : 'Antony', password: pw3 },
-        {name : 'Chad', password: pw4 },
-        {name : 'Sharon', password: pw5 },
-        {name : 'Mushfika', password: pw6 },
-        {name : 'Stanley', password: pw7 },
+        {name : 'Tyson', password:'ty212' },
+        {name : 'James', password :'ja275'},
+        {name : 'Antony', password:'an649' },
+        {name : 'Chad', password: 'sh515'},
+        {name : 'Sharon', password: 'mu298'},
+        {name : 'Mushfika', password: 'st998'},
+        {name : 'Stanley', password: 'ch275'},
     ];
 
     return users
