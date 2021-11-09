@@ -1,0 +1,15 @@
+// Instructions on how to create this portion https://www.youtube.com/watch?v=RcxvrhQKv8I
+// Press {option+command+e} to change environments
+{
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "apiKey": "my-api-key-321"
+        },
+        "Local Env": {
+            "hostname": "http://localhost:3000"
+        },
+        "Dev2 Env": { 
+            "hostname": "http://localhost:8080"
+        }
+    }
+}

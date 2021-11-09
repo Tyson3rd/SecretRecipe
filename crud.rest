@@ -1,0 +1,35 @@
+# @hostname = http://localhost:3000
+
+GET {{hostname}}
+###
+GET {{hostname}}/Memberships
+###
+POST {{hostname}}/Memberships
+Content-Type: application/json
+
+{
+    "name" : "Bronze",
+    "price" : 20.00
+}
+###
+PUT {{hostname}}/memberships/2
+Content-Type: application/json
+
+{
+    "name" : "Gold",
+    "price" : 75.00
+}
+###
+DELETE {{hostname}}/memberships/4
+###
+
+# GET {{hostname}}/auth-endpoint
+# Authorization: my-api-key-321
+
+###
+ 
+#  **************CRUD**************
+#  CREATE = POST
+#  READ = GET
+#  UPDATE = PUT
+#  DELETE = DELETE
