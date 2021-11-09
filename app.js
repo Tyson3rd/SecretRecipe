@@ -1,8 +1,9 @@
 const express = require("express");
 const basicAuth = require('express-basic-auth');
 const bcrypt = require('bcrypt');
+const {getAllUsers, addUser, getOneUser, deleteOneUser} = require('./controller/auth')
 
-const {User, Membership} = require('./models');
+// const {User, Membership} = require('./models');
 
 // initialise Express
 const app = express();
@@ -14,45 +15,43 @@ app.use(express.json());
 ////////////////////////////////////////////////////////
 //basic auth needs a config object
 // app.use('/sensitive', basicAuth({
-app.use(basicAuth({
-  authorizer : dbAuthorizer, //custom authorizer fn
-  authorizeAsync: true, //allow our authorizer to be async
-  unauthorizedResponse : () => 'Did You Really Think It Would Be That Easy!!!?'
-}))
+// app.use(basicAuth({
+//   authorizer : dbAuthorizer, //custom authorizer fn
+//   authorizeAsync: true, //allow our authorizer to be async
+//   unauthorizedResponse : () => 'Did You Really Think It Would Be That Easy!!!?'
+// }))
 
-//compares username + password with what's in the database
-// Returns boolean indicating if password matches
-async function dbAuthorizer(username, password, callback){
-  try {
-    // get user from DB
-    const user = await User.findOne({where : {name : username}})
-    // isValid == true if user exists and passwords match, false if no user or passwords don't match
-    let isValid = (user != null) ? await bcrypt.compare(password, user.password) : false;
-    callback(null, isValid); //callback expects null as first argument
-  } catch(err) {
-    console.log("OH NO AN ERROR!", err)
-    callback(null, false);
-  }
-}
+// //compares username + password with what's in the database
+// // Returns boolean indicating if password matches
+// async function dbAuthorizer(username, password, callback){
+//   try {
+//     // get user from DB
+//     const user = await User.findOne({where : {name : username}})
+//     // isValid == true if user exists and passwords match, false if no user or passwords don't match
+//     let isValid = (user != null && user.name === "Tyson") ? await bcrypt.compare(password, user.password) : false;
+//     callback(null, isValid); //callback expects null as first argument
+//   } catch(err) {
+//     console.log("OH NO AN ERROR!", err)
+//     callback(null, false);
+//   }
+// }
 
 ////////////////////////////////////////////////////////
 // const { regexp } = require("sequelize/types/lib/operators");
 ////////////////////////////////////////////////////////
 
 app.get('/', (req, res,) => {
-  res.send('<h1>If You Can See Me, Then I Am Working!!!</h1>')
+  res.send('If You Can See Me, Then I Am Working!!!')
 })
 
-app.get('/users', async (req, res) => {
-  //what should i put here?
-  let users = await User.findAll()
-  res.json({users});
-})
+// routes for crud users
+app.get('/users', getAllUsers)
 
-app.get('/users/:id', async (req, res) => {
-  let user = await User.findByPk(req.params.id);
-  res.json({user});
-})
+app.post('/users', addUser)
+
+app.get('/users/:id', getOneUser)
+
+app.delete('/users/:id', deleteOneUser)
 
 // I want to get all memberships
 
@@ -106,10 +105,10 @@ app.listen(3000, () => {
 // 2nd app requesr with a single get request in the route, listening on port 8080
 const app2 = express();
 // app2.use(bodyParser.json());
-app2.get("/", (req, res) => res.send("Bet You Didn't Think I Could Change Environments On Your A**!!! ;-D "))
-app2.listen(8080, () => {
-  console.log("Server running on port 8080");
-});
+// app2.get("/", (req, res) => res.send("Bet You Didn't Think I Could Change Environments On Your A**!!! ;-D "))
+// app2.listen(8080, () => {
+//   console.log("Server running on port 8080");
+// });
 
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
