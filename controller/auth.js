@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Recipe} = require('../models');
 
   const getAllUsers = async (req, res) => {
     //what should i put here?
@@ -23,4 +23,31 @@ const {User} = require('../models');
     res.send('Deleted!')
   }
 
-  module.exports = {getAllUsers, addUser, getOneUser, deleteOneUser }
+  const getAllRecipes = async(req, res)=> {
+    let recipes = await Recipe.findAll();
+    res.json({recipes});
+  }
+
+  const getOneRecipe = async(req, res)=> {
+    let recipe = await Recipe.findByPk(req.params.id);
+    res.json({recipe});
+  }
+
+  const deleteOneRecipe = async(req, res)=> {
+    await Recipe.destroy({where: {id: req.params.id}});
+    res.send('Deleted!')
+  }
+
+  const addOneRecipe = async(req, res)=> {
+    let newRecipe = await Recipe.create(req.body);
+    res.json({newRecipe})
+  }
+
+  const updateOneRecipe = async(req, res)=> {
+    let updatedRecipe = await Recipe.update(req.body, {
+      where : {id : req.params.id}
+    });
+    res.json({updatedRecipe})
+  }
+
+  module.exports = {getAllUsers, addUser, getOneUser, deleteOneUser, getAllRecipes, getOneRecipe, deleteOneRecipe, addOneRecipe, updateOneRecipe }
