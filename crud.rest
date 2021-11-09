@@ -2,25 +2,25 @@
 
 GET {{hostname}}
 ###
-GET {{hostname}}/Memberships
+GET {{hostname}}/Recipes
 ###
-POST {{hostname}}/Memberships
+POST {{hostname}}/Recipes
 Content-Type: application/json
 
 {
-    "name" : "Bronze",
-    "price" : 20.00
+    "name" : "Krabby Patty",
+    "ingredients" : "Bun, 1 Patty, Sea Cheese, Sea Onions, Pickles, Ketchup, Mayo"
 }
 ###
-PUT {{hostname}}/memberships/2
+PUT {{hostname}}/recipes/2
 Content-Type: application/json
 
 {
-    "name" : "Gold",
-    "price" : 75.00
+    "name" : "Krabby Patty",
+    "ingredients" : "Bun, 1 Patty, Sea Cheese, Sea Onions, Pickles, Ketchup, Mayo"
 }
 ###
-DELETE {{hostname}}/memberships/4
+DELETE {{hostname}}/recipes/4
 ###
 
 # GET {{hostname}}/auth-endpoint

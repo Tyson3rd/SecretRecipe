@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 class User extends Model {}
 
-class Membership extends Model {}
+class Recipe extends Model {}
 
 User.init({
     name: DataTypes.STRING,
@@ -26,9 +26,9 @@ User.beforeCreate((user, options) => {
 });
 
 
-Membership.init({
+Recipe.init({
     name: DataTypes.STRING,
-    price: DataTypes.DECIMAL(5,2)
+    ingredients: DataTypes.STRING
 }, {
     sequelize,
     timestamps: false,
@@ -36,4 +36,4 @@ Membership.init({
 
 
 
-module.exports = {User, Membership};
+module.exports = {User, Recipe};

@@ -3,7 +3,7 @@ const basicAuth = require('express-basic-auth');
 const bcrypt = require('bcrypt');
 const {getAllUsers, addUser, getOneUser, deleteOneUser} = require('./controller/auth')
 
-// const {User, Membership} = require('./models');
+const { Recipe } = require('./models');
 
 // initialise Express
 const app = express();
@@ -53,41 +53,41 @@ app.get('/users/:id', getOneUser)
 
 app.delete('/users/:id', deleteOneUser)
 
-// I want to get all memberships
+// I want to get all recipes
 
-app.get('/memberships', async(req, res)=> {
-  let memberships = await Membership.findAll();
-  res.json({memberships});
+app.get('/recipes', async(req, res)=> {
+  let recipes = await Recipe.findAll();
+  res.json({recipes});
 })
 
-// I want to get one membership
+// I want to get one recipe
 
-app.get('/memberships/:id', async(req, res)=> {
-  let membership = await Membership.findByPk(req.params.id);
-  res.json({membership});
+app.get('/recipes/:id', async(req, res)=> {
+  let recipe = await Recipe.findByPk(req.params.id);
+  res.json({recipe});
 })
 
-// I want to delete one membership
+// I want to delete one recipe
 
-app.delete('/memberships/:id', async(req, res)=> {
-  await Membership.destroy({where: {id: req.params.id}});
+app.delete('/recipes/:id', async(req, res)=> {
+  await Recipe.destroy({where: {id: req.params.id}});
   res.send('Deleted!')
 })
 
-// I want to create one membership
+// I want to create one recipe
 
-app.post('/memberships', async(req, res)=> {
-  let newMembership = await Membership.create(req.body);
-  res.json({newMembership})
+app.post('/recipes', async(req, res)=> {
+  let newRecipe = await Recipe.create(req.body);
+  res.json({newRecipe})
 })
 
-// I want to update one membership
+// I want to update one recipe
 
-app.put('/memberships/:id', async(req, res)=> {
-  let updatedMembership = await Membership.update(req.body, {
+app.put('/recipes/:id', async(req, res)=> {
+  let updatedRecipe = await Recipe.update(req.body, {
     where : {id : req.params.id}
   });
-  res.json({updatedMembership})
+  res.json({updatedRecipe})
 })
 
 // app request that sends "Authorized!!!" only with the attached api-key
