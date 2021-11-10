@@ -1,6 +1,7 @@
 const express = require("express");
 const basicAuth = require("express-basic-auth");
 const bcrypt = require("bcrypt");
+const cors = require ('cors')
 const {
   getAllUsers,
   addUser,
@@ -17,6 +18,8 @@ const { User } = require("./models");
 
 // initialise Express
 const app = express();
+
+app.use(cors())
 
 // specify out request bodies are json
 app.use(express.json());
@@ -102,6 +105,6 @@ app.put("/recipes/:id", requireAuth, updateOneRecipe);
 //   }
 // })
 // 1st app listening on port 3000
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });

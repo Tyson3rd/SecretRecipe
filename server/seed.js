@@ -8,12 +8,12 @@ const {User, Recipe} = require('./models');
 const createUsers = async () => {
 
     const users = [
-        {name : 'Tyson', password:'ty212' },
-        {name : 'Stanley', password :'ja275'},
-        {name : 'Judy', password:'an649' },
-        {name : 'Mr Krabs', password: 'sh515'},
-        {name : 'Spongebob', password: 'mu298'},
-        {name : 'Squidward', password: 'st998'}
+        {name : 'Tyson', email:'tyson@gmail.com', password:'ty212' },
+        {name : 'Stanley', email:'stanley@gmail.com', password :'ja275'},
+        {name : 'Judy', email:'judy@gmail.com', password:'an649' },
+        {name : 'Mr Krabs', email:'krabs@gmail.com', password: 'sh515'},
+        {name : 'Spongebob', email:'spongebob@gmail.com', password: 'mu298'},
+        {name : 'Squidward', email:'squidward@gmail.com', password: 'st998'}
     ];
 
     return users
