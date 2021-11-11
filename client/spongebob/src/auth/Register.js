@@ -28,24 +28,25 @@ export const Register = () => {
     }
  }
   return (
-      <>
-    <div className="container-fluid bg-secondary p-5 text-center">
-      <h1>Register</h1>
-    </div>
-    <div className="container">
-      <div className ="row">
-       <div className ="col-6 offset-md-3">
-        <RegistrationForm 
-        handleSubmit={handleSubmit} 
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}/>
-       </div>
+    <>
+      <div className="container-fluid bg-secondary p-5 text-center text-light">
+        <h1>Register</h1>
       </div>
-    </div>
+      <div className="container">
+        <div className="registration row">
+          <div className="col-6 offset-md-3">
+            <RegistrationForm
+              handleSubmit={handleSubmit}
+              name={name}
+              setName={setName}
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+            />
+          </div>
+        </div>
+      </div>
     </>
-  )
+  );
 }

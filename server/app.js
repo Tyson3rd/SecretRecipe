@@ -1,7 +1,7 @@
 const express = require("express");
 const basicAuth = require("express-basic-auth");
 const bcrypt = require("bcrypt");
-const cors = require ('cors')
+const cors = require("cors");
 const {
   getAllUsers,
   addUser,
@@ -19,7 +19,7 @@ const { User } = require("./models");
 // initialise Express
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
 // specify out request bodies are json
 app.use(express.json());
@@ -78,7 +78,7 @@ app.delete("/users/:id", requireAuth, deleteOneUser);
 
 //routes for recipes
 // I want to get all recipes
-app.get("/recipes", requireAuth, getAllRecipes);
+app.get("/recipes", getAllRecipes);
 
 // I want to get one recipe
 
